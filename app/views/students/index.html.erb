@@ -1,0 +1,28 @@
+<div class="container mt-5 ">
+  <table class="table table-hover text-center">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Roll Number</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+      <tr >
+        <td> <%= student.name %> </td>
+        <td> <%= student.rollnumber %> </td>
+        <td> <%= link_to "Edit" , edit_student_path(student) %> &nbsp; <%= link_to "Delete" , destroy_path(id: student.id), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>
+<div class="container text-center mt-5">
+  <%= link_to 'Add Strudent', new_student_path, class: 'btn btn-primary' %>
+  <!-- <button type="button" onclick="" class="btn btn-primary">Add Student</button> -->
+</div>
