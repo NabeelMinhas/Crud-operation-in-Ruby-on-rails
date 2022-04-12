@@ -12,7 +12,7 @@
       <tr >
         <td> <%= student.name %> </td>
         <td> <%= student.rollnumber %> </td>
-        <td> <%= link_to "Edit" , edit_student_path(student) %> &nbsp; <%= link_to "Delete" , destroy_path(id: student.id), data: {
+    <td> <%= link_to "Edit" , edit_student_path(student) %> &nbsp; <%= link_to "Delete" , destroy_path(id: student.id), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %> </td>

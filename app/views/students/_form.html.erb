@@ -1,17 +1,26 @@
 <div class="container mt-5">
   <%= form_with model: @student do |forms| %>
+
   <div>
     <%= forms.label :name, {class:"form-label"} %><br>
     <%= forms.text_field :name, {class: "form-control"} %>
+    <% @student.errors.full_messages_for(:name).each do |message| %>
+      <div><span style="color:red"> <%= message %></span> </div>
+    <% end %>
   </div>
 
   <div>
     <%= forms.label :rollnumber, {class:"form-label"} %><br>
     <%= forms.text_field :rollnumber, {class: "form-control"} %>
+    <% @student.errors.full_messages_for(:rollnumber).each do |message| %>
+      <div> <span style="color:red"> <%= message %> </span> </div>
+    <% end %>
   </div>
 
   <div class="text-center">
     <%= forms.submit "Create", {class:"btn btn-primary mt-5"} %>
   </div>
-<% end %>
+
+
+  <%end%>
 </div>

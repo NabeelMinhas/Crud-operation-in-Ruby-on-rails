@@ -3,13 +3,6 @@ class StudentsController < ApplicationController
     @students=Student.all
   end
 
-  def delete
-  end
-
-  def show
-    @student = Student.find(params[:id])
-  end
-
   def new
     @student =Student.new
   end
@@ -29,14 +22,17 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @students=Student.new(student_params)
-    if @students.save
-      redirect_to students_path, flash: { success: 'Your Image was successfully save.' }
+    @student=Student.new(student_params)
+    if @student.save
+      redirect_to students_path
+    # else
+    #   redirect_to :back, flash: { alert: "Your Image don't save." }
     else
-      redirect_to :back, flash: { alert: "Your Image don't save." }
+      # errors
+      render :new
     end
-  rescue ActionController::ParameterMissing => e
-    redirect_to :back, flash: { alert: "Please attach an image." }
+  # rescue ActionController::ParameterMissing => e
+  #   redirect_to :back, flash: { alert: "Please attach an image." }
   end
 
   def destroy
